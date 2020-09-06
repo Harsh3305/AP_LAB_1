@@ -26,6 +26,16 @@ public class Hospital {
         // NumberOfPacient = numberOfPacient;
     }
 
+    public int getBedsCount() {
+        ArrayList<Patient> L = mapOfPatient.get(this);
+        if (L == null){ 
+            return 0;
+        }
+        else {
+            return L.size();
+        }
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -107,6 +117,7 @@ public class Hospital {
         if (L != null) {
             L.remove(P);
         }
+        
     }
 
     public void addPatient (Patient P) {
@@ -114,18 +125,28 @@ public class Hospital {
         if (L == null) {
             L = new ArrayList<>();
         }
-        L.add(P);
-        NumberOfPacient++;
+        if (! L.contains(P)){ 
+            L.add(P);
+            NumberOfPacient++; // TODO Something Wrong;
+        }
+        
         mapOfPatient.put(this, L);
     }
 
 
     public boolean isFull () {
-        if (NumberOfBedsAvailable >= NumberOfPacient) {
-            return false;
+
+        // if (NumberOfBedsAvailable >= NumberOfPacient) {
+        //     return false;
+        // }
+        // return true;
+    //  TODO: CHANGE;
+        if (NumberOfBedsAvailable <= NumberOfPacient) {
+            return true;
         }
-        return true;
+        return false;
     }
+
 
 
     public boolean isInsert(Patient P) {
@@ -151,10 +172,13 @@ public class Hospital {
             Hospital H = it.next();
             ArrayList<Patient> L = mapOfPatient.get(H);
             if (L != null) {
-                for (int i = 0; i < L.size(); i++) {
-                    L.get(i).deleteAndDisplay();
+                int a = L.size();
+                for (int i = 0; i < a; i++) {
+                    L.get(0).deleteAndDisplay();
                 }
+                
             }
+            
         }
     }
 
@@ -190,7 +214,8 @@ public class Hospital {
                 System.out.println(Name);
                 System.out.println("Temperature should be <= " + H.getTempratureCritaria());
                 System.out.println("Oxygen levels should be >= " + H.getOxygenLevel());
-                System.out.println("Number of Available beds – " + (H.getNumberOfBedsAvailable() - H.NumberOfPacient));
+                // System.out.println("Number of Available beds – " + (H.getNumberOfBedsAvailable() - H.NumberOfPacient));
+                System.out.println("Number of Available beds – " + (H.getBedsCount())); // TODO: WRONG
                 System.out.println("Admission Status – " + (H.isFull()==true ? "CLOSED":"OPENED"));
             }
         }

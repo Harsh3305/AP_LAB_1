@@ -8,9 +8,6 @@ import Patient.Patient;
 import Reader.Reader;
 
 public class Init {
-    
-    
-
     public static void main(String[] args) throws IOException {
         Reader.init(System.in);
         int NumberOfPatient = Reader.nextInt();
@@ -73,16 +70,15 @@ public class Init {
                     if (hospital.isInsert(list.get(i))) {
                         hospital.addPatient(list.get(i));
                         list.get(i).addHospital(hospital);
-                        System.out.print("Recovery days for admitted patient ID - "+list.get(i).getID() + " ");
+                        System.out.print("Recovery days for admitted patient ID - " + list.get(i).getID() + " ");
                         int days = Reader.nextInt();
                         list.get(i).setRecoveryDays(days);
                     }
-
                 }
             }
         }
 
-        
+
     }
 
     public static void removedPatients2() {
@@ -91,8 +87,8 @@ public class Init {
 
 
     public static void addHospital3() {
-        System.out.println("Accounts removed of Institute whose admission is closed");
-        
+        // System.out.println("Accounts removed of Institute whose admission is closed");
+        Hospital.deleteAllHospital();
     }
 
     public static void getPatientNotAddmitted4() {
@@ -113,11 +109,11 @@ public class Init {
     }
 
     public static void displayHospitalInfo6(String Name) {
-        Hospital.getInfo(Name);
+        Hospital.getInfo(Name); // TODO: Wrong
     }
 
     public static void displayPatientInfo7(int ID) {
-        Patient.getInfo(ID);
+        Patient.getInfo(ID); // TODO: When deleted, then also shows Info :( Wrong
     }
 
     public static void displayAllPatient8() {
@@ -139,7 +135,7 @@ public class Init {
         try {
 
 
-            while (Patient.Active.size() > 0) {
+            while (! Patient.isAllPatientAdmitted()) {
                 int command = Reader.nextInt();
     
                 if (command == 1) {

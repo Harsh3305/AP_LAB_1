@@ -33,6 +33,7 @@ public class Patient {
         }
         else {
             Active.add(P);
+            setOfPatient.add(P);
         }
 
         return P;
@@ -154,5 +155,18 @@ public class Patient {
 
             System.out.println(P.ID + " " + P.Name);
         }
+    }
+
+    public static boolean isAllPatientAdmitted() {
+        
+        for (int i = 0; i < setOfPatient.size(); i++) {
+            Patient P = setOfPatient.get(i);
+            if (P.hospital == null) {
+                return false;
+            }
+        }
+
+        return true;
+
     }
 }

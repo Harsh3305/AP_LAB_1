@@ -1,3 +1,3 @@
 # AP Lab Assignment- 1
 
-![some discription](/AP_Assignment_1.pdf "some discription")
+![Problem statement](/AP_Assignment_1.pdf "Problem statement")

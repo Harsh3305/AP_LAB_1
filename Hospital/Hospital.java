@@ -103,8 +103,9 @@ public class Hospital {
     public void deleteHospital () {
         ArrayList<Patient> L = mapOfPatient.get(this);
         if (L != null) {
-            for (int i = 0; i < L.size(); i++) {
-                Patient P = L.get(i);
+            int s = L.size();
+            for (int i = 0; i < s; i++) {
+                Patient P = L.get(0);
                 P.delete();
             }
         }
@@ -214,8 +215,8 @@ public class Hospital {
                 System.out.println(Name);
                 System.out.println("Temperature should be <= " + H.getTempratureCritaria());
                 System.out.println("Oxygen levels should be >= " + H.getOxygenLevel());
-                // System.out.println("Number of Available beds – " + (H.getNumberOfBedsAvailable() - H.NumberOfPacient));
-                System.out.println("Number of Available beds – " + (H.getBedsCount())); // TODO: WRONG
+                System.out.println("Number of Available beds – " + (H.getNumberOfBedsAvailable() - H.NumberOfPacient));
+                // System.out.println("Number of Available beds – " + (H.getBedsCount())); // TODO: WRONG
                 System.out.println("Admission Status – " + (H.isFull()==true ? "CLOSED":"OPENED"));
             }
         }

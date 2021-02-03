@@ -144,7 +144,13 @@ public class Patient {
                 System.out.println(P.getName());
                 System.out.println("Temperature is " + P.getTemprature());
                 System.out.println("Oxygen levels is " + P.getOxygenLevel());
-                System.out.println("Admission Status – " + (P.getHospital() == null ? "Not Admitted":"Admitted"));
+                if (P.delete) {
+                    System.out.println("Admission Status – " + ("Account is now removed"));
+                }
+                else {
+                    System.out.println("Admission Status – " + (P.getHospital() == null ? "Not Admitted":"Admitted"));
+                }
+                
             }
         }
     }
